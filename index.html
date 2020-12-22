@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Fuerte: a strong password generator with no depenencies</title>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="//code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="dist/fuerte-lib.js"></script>
+  </head>
+  <body>
+    <div class="container pt-5">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6 col-xl-4">
+          <form
+            id="fuerte"
+            class="card"
+          >
+            <div class="card-body">
+              <div class="form-group">
+                <label for="password" class="sr-only">Your New Password</label>
+                <input
+                  id="password"
+                  type="text"
+                  class="form-control"
+                  data-fuerte="password"
+                  style="font-family: monospace; font-size:1.2rem;"
+                  readonly
+                >
+              </div>
+              <div class="form-group">
+                <label
+                  for="password_type"
+                  class="sr-only"
+                >
+                  Password Type
+                </label>
+                <select
+                  id="password_type"
+                  class="custom-select"
+                  data-fuerte="type"
+                >
+                  <option value="memorable">Memorable</option>
+                  <option value="random">Random</option>
+                  <option value="pin">PIN</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label
+                  for="password_separator_type"
+                  class="sr-only"
+                >
+                  Separator Type
+                </label>
+                <select
+                  id="password_separator_type"
+                  class="custom-select"
+                  data-fuerte="separator"
+                >
+                  <option value="-">Separated by Hyphens</option>
+                  <option value=" ">Separated by Spaces</option>
+                  <option value=",">Separated by Commas</option>
+                  <option value="_">Separated by Underscores</option>
+                  <option value="0">Separated by Digits</option>
+                  <option value="0_">Separated by Digits and Symbols</option>
+                </select>
+              </div>
+              <div class="form-group d-flex align-items-center">
+                <label
+                  for="fuerte_size"
+                  class="d-block small text-muted mb-0 mr-3 text-nowrap"
+                >
+                  Size
+                </label>
+                <input
+                  id="fuerte_size"
+                  type="range"
+                  class="custom-range mb-0"
+                  value="0"
+                  data-fuerte="size"
+                >
+              </div>
+              <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="fuerte_capitalize"
+                    data-fuerte="capitalize"
+                  >
+                  <label
+                    class="custom-control-label"
+                    for="fuerte_capitalize"
+                  >
+                    Capitalize
+                  </label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="fuerte_numbers"
+                    data-fuerte="numbers"
+                  >
+                  <label
+                    class="custom-control-label"
+                    for="fuerte_numbers"
+                  >
+                    Numbers
+                  </label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="fuerte_symbols"
+                    data-fuerte="symbols"
+                  >
+                  <label
+                    class="custom-control-label"
+                    for="fuerte_symbols"
+                  >
+                    Symbols
+                  </label>
+                </div>
+              </div>
+              <button
+                class="btn btn-dark btn-block"
+                data-fuerte="generate"
+              >
+                Generate Password
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      fuerte()
+        .addEventListener(function(event, data) {
+          if (event === 'change') {
+            console.log(data)
+          }
+        })
+        .form(document.getElementById('fuerte'))
+    </script>
+  </body>
+</html>

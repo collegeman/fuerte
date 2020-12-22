@@ -1,0 +1,14 @@
+{
+  "name": "fuerte",
+  "version": "1.0.0",
+  "description": "Generate strong passwords",
+  "main": "src/index.js",
+  "repository": "https://github.com/collegeman/fuerte",
+  "author": "Aaron Collegeman <aaron@collegeman.net>",
+  "license": "MIT",
+  "devDependencies": {
+    "laravel-mix": "^6.0.2",
+    "postcss": "^8.1",
+    "raw-loader": "^4.0.2"
+  }
+}
