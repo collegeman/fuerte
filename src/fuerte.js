@@ -1,4 +1,4 @@
-import words from './eff_short_wordlist_2_0.txt'
+import words from './eff_short_wordlist_1.txt'
 
 let bank = []
 
