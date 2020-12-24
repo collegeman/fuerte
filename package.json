@@ -10,7 +10,7 @@
   "author": "Aaron Collegeman <aaron@collegeman.net>",
   "license": "MIT",
   "devDependencies": {
-    "laravel-mix": "^6.0.2",
+    "laravel-mix": "^6.0.3",
     "postcss": "^8.1",
     "raw-loader": "^4.0.2"
   },

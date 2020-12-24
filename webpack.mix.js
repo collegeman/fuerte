@@ -12,5 +12,4 @@ mix.webpackConfig({
 });
 
 mix.js('src/fuerte.js', 'dist');
-mix.js('src/fuerte-lib.js', 'dist')
-mix.minify(['dist/fuerte.js', 'dist/fuerte-lib.js']);
+mix.js('src/fuerte-lib.js', 'dist');
