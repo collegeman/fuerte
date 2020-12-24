@@ -15,13 +15,16 @@ but it can also create the sorts of strong passwords that your bank
 and your insurance company want you to use, because they're
 complicated, like `Tr0ub4dor&3`.
 
-In a pinch, it can even blend the two heuristics to create something 
+In a pinch, it can even blend the two methods to create something 
 like `correct!HORSE3battery%staple`, which, while difficult to
 memorize, is at least equally difficult for a computer to guess.
 
 The library is available for JavaScript and PHP projects, and if
 you're using PHP, it installs easily into Laravel and WordPress
-projects.
+codebases. 
+
+As of version `1.0.7`, both libraries use cryptographically secure 
+random number generators.
 
 ## Need a new password right now?
 
@@ -30,11 +33,15 @@ You can experience Fuerte in action on [makepass.dev](https://makepass.dev). Enj
 ## Quickstart Guide
 
 There are two versions of Fuerte: one for JavaScript and one for PHP.
+Both are a part of this codebase.
+
 You can also use the PHP library as a WordPress plugin or as a Laravel
-package. You only need one of these solutions for your project, but they 
+package. 
+
+You only need one of these solutions for your project, but they 
 can also be used together.
 
-### JavaScript Library
+### Using the JavaScript library
 
 The Fuerte package is available via NPM:
 
@@ -42,14 +49,7 @@ The Fuerte package is available via NPM:
 npm install @collegeman/fuerte
 ```
 
-Once added to your project, you can import Fuerte's API like this:
-
-```js
-import fuerte from '@collegeman/fuerte'
-let password = fuerte().make() // a random, memorable password!
-````
-
-Alternatively, you can download this repository, place the uncompressed files 
+You can also just download this repository, place the uncompressed files 
 among your project's assets, and then load the the library:
 
 ```html
@@ -62,13 +62,20 @@ among your project's assets, and then load the the library:
 You can also load the library via jsdeliver:
 
 ```html
-<script src="//cdn.jsdelivr.net/gh/collegeman/fuerte@master/dist/fuerte.js"></script>
+<script src="//cdn.jsdelivr.net/gh/collegeman/fuerte@1.0.7/dist/fuerte-lib.js"></script>
 <script>
   var password = fuerte().make() // a random, memorable password!
 </script>
 ```
 
-### PHP Library
+Once added to your project, you can import Fuerte's API like this:
+
+```js
+import fuerte from '@collegeman/fuerte'
+let password = fuerte().make() // a random, memorable password!
+````
+
+### Using the PHP library
 
 The Fuerte package can be installed using Composer:
 
@@ -115,10 +122,11 @@ To install Fuerte into any other WordPress site, first download this repository,
 then upload the uncompressed files into your site's `plugins` folder into
 a subfolder named `fuerte`. Then, activate the plugin.
 
-## Configuring Fuerte's generator
+There are in-code configuration options. See [WordPress plugin configuration](#wordpress-plugin-configuration), below.
+## Configuring the generator
 
 Whether you are using the JavaScript library or the PHP one, Fuerte's API
-is the same: it is a fluid, allowing you to chain methods invocations together
+is the same: it's fluent, allowing you to chain method invocations together
 to configure the generator and then make a password, like this:
 
 ```js
@@ -134,12 +142,14 @@ $password = fuerte()->memorable()->separator('.')->capitalize()->size(6)->make()
 // e.g., "snout.exit.SCUBA.watch.silly.hash"
 ```
 
-Because the API is consistent, all remaining examples use the JavaScript version.
+Because the API is consistent across platforms, all remaining examples use the JavaScript version.
 
 ### Password type
 
-Fuerte can generate three types of strong passwords: **memorable**, **random**,
-and **PIN**. You can tell Fuerte what type of password you want just by
+Fuerte can generate three types of strong passwords: **memorable** (like `correct horse battery staple`), 
+**random** (like `Tr0ub4dor&3`), and **PIN** (like `1234`). 
+
+You can tell Fuerte what type of password you want just by
 invoking the type name:
 
 ```js
@@ -231,11 +241,11 @@ reset screen:
 
 ![](assets/wordpress-password-reset.png)
 
-Just click the button `reload` button (either in the UI or on the browser)
-to get a new suggestion.
+Just click the reload button (either in the UI on the page or on the browser)
+to get another suggestion.
 
 If you don't want Fuerte to add these features to WordPress, just add the
-following code to your `functions.php`:
+following code to your theme's `functions.php` or to a must-use plugin file:
 
 ```php
 <?php
@@ -257,16 +267,15 @@ add_filter('fuerte', function(\Collegeman\Fuerte\Generator $generator) {
 
 If you find a problem with Fuerte, please post an [issue](https://github.com/collegeman/fuerte/issues) on GitHub.
 
-
 ## Credits
 
 The inspiration for a cross-platform password generator with a consistent API
 comes from the XKCD comic above as well as requirements from several of
-the projects I'm working on at the moment. The image above belongs
-to the XKCD comic, and has been used without explicit permission.
+the projects I'm working on at the moment. The image has been used without 
+explicit permission.
 
 The features of the generator were inspired and constrained by the 
-minimal design of the password generated built into [1Password](https://1password.com/).
+minimal design of the password generator built into [1Password](https://1password.com/).
 If you don't use a password manager, I highly recommend you give
 1Password a try.
 

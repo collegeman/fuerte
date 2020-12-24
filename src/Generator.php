@@ -59,7 +59,7 @@ class Generator
       }
       self::$bank = explode("\n", self::$words);
     }
-    $i = array_rand(self::$bank);
+    $i = self::arrayRand(self::$bank);
     $word = self::$bank[$i];
     unset(self::$bank[$i]);
     return $word;
@@ -118,6 +118,20 @@ class Generator
   }
 
   /**
+   * @param array $elements
+   * @return mixed
+   * @throws \Exception
+   */
+  public static function arrayRand(array $elements)
+  {
+    $keys = array_keys($elements);
+    $min = 0;
+    $max = count($keys) - 1;
+    $rand = random_int($min, $max);
+    return $keys[$rand];
+  }
+
+  /**
    * @return string
    */
   public function make()
@@ -135,7 +149,7 @@ class Generator
         $words[] = $this->word();
       }
       if ($this->capitalize) {
-        $which = array_rand($words);
+        $which = self::arrayRand($words);
         $words[$which] = strtoupper($words[$which]);
       }
       $separatorBanks = [];
@@ -220,7 +234,7 @@ class Generator
       if (count($bank) < 1) {
         $bank = str_split($from);
       }
-      $i = array_rand($bank);
+      $i = self::arrayRand($bank);
       array_push($random, $bank[$i]);
       unset($bank[$i]);
     }

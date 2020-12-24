@@ -38,6 +38,12 @@ maxSize[Fuerte.TYPE_RANDOM] = 100
 maxSize[Fuerte.TYPE_MEMORABLE] = 15
 maxSize[Fuerte.TYPE_PIN] = 12
 
+const rand = (elements) => {
+  var random = new Uint32Array(1);
+  window.crypto.getRandomValues(random)
+  return parseFloat('0.' + random[0].toString())
+}
+
 const containsChars = (string, banks) => {
   if (banks.length < 1) {
     return true
@@ -77,7 +83,7 @@ const randomChars = (from, length) => {
     if (bank.length < 1) {
       bank = from.split('')
     }
-    let i = Math.round(Math.random() * (bank.length-1))
+    let i = Math.round(rand() * (bank.length-1))
     random.push(bank[i])
     bank.splice(i, 1)
   }
@@ -89,7 +95,7 @@ const shuffle = (string) => {
     n = a.length;
 
   for(var i = n - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
+    var j = Math.floor(rand() * (i + 1));
     var tmp = a[i];
     a[i] = a[j];
     a[j] = tmp;
@@ -184,7 +190,7 @@ Fuerte.prototype.word = function() {
   if (bank.length < 1) {
     bank = words.split("\n")
   }
-  let i = Math.round(Math.random() * (bank.length-1))
+  let i = Math.round(rand() * (bank.length-1))
   let word = bank[i]
   bank.splice(i, 1)
   return word
@@ -208,7 +214,7 @@ Fuerte.prototype.make = function() {
       words.push(this.word())
     }
     if (this._capitalize) {
-      let which = Math.round(Math.random() * (words.length-1))
+      let which = Math.round(rand() * (words.length-1))
       words[which] = words[which].toUpperCase()
     }
     let separatorBanks = []
