@@ -15,7 +15,9 @@ but it can also create the sorts of strong passwords that your bank
 and your insurance company want you to use, because they're
 complicated, like `Tr0ub4dor&3`.
 
-In a pinch, it can even blend the two heuristics to create something like `correct!HORSE3battery%staple`
+In a pinch, it can even blend the two heuristics to create something 
+like `correct!HORSE3battery%staple`, which, while difficult to
+memorize, is at least equally difficult for a computer to guess.
 
 The library is available for JavaScript and PHP projects, and if
 you're using PHP, it installs easily into Laravel and WordPress
