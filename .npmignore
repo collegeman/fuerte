@@ -1,1 +1,5 @@
-CNAME
+node_modules
+.DS_Store
+.idea
+/vendor
+mix-manifest.json
