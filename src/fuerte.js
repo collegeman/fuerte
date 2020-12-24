@@ -2,26 +2,26 @@ import words from './eff_short_wordlist_1.txt'
 
 let bank = []
 
-const digits = '0123456789'
-const symbols = '!@#_-.*%'
-const lower = 'abcdefghijklmnopqrstuvwxyz'
-const upper = lower.toUpperCase()
-
 const Fuerte = function() {
   this._listeners = []
   this._symbols = false
   this._capitalize = false
   this._numbers = false
-  this._separator = Fuerte.SEPARATOR_HYPHENS
+  this._separator = Fuerte.SEPARATOR_SPACES
   this.type(Fuerte.TYPE_MEMORABLE)
 }
+
+Fuerte.DIGITS = '0123456789'
+Fuerte.SYMBOLS = '!@#_-.*%'
+Fuerte.LOWER = 'abcdefghijklmnopqrstuvwxyz'
+Fuerte.UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 Fuerte.TYPE_RANDOM = 'random'
 Fuerte.TYPE_MEMORABLE = 'memorable'
 Fuerte.TYPE_PIN = 'pin'
 
-Fuerte.SEPARATOR_HYPHENS = '-'
 Fuerte.SEPARATOR_SPACES = ' '
+Fuerte.SEPARATOR_HYPHENS = '-'
 Fuerte.SEPARATOR_PERIODS = '.'
 Fuerte.SEPARATOR_COMMAS = ','
 Fuerte.SEPARATOR_UNDERSCORES = '_'
@@ -30,7 +30,7 @@ Fuerte.SEPARATOR_DIGITS_AND_SYMBOLS = '0_'
 
 const minSize = []
 minSize[Fuerte.TYPE_RANDOM] = 8
-minSize[Fuerte.TYPE_MEMORABLE] = 3
+minSize[Fuerte.TYPE_MEMORABLE] = 4
 minSize[Fuerte.TYPE_PIN] = 3
 
 const maxSize = []
@@ -199,7 +199,8 @@ Fuerte.prototype.make = function() {
 
   // Make a pin-type password
   if (this._type === Fuerte.TYPE_PIN) {
-    password = randomChars('0123456789', this._size)
+    password = randomChars(Fuerte.DIGITS, this._size)
+
   // Make a memorable-type password
   } else if (this._type === Fuerte.TYPE_MEMORABLE) {
     let words = []
@@ -213,13 +214,12 @@ Fuerte.prototype.make = function() {
     let separatorBanks = []
     let separator = this._separator
     if (this._separator === Fuerte.SEPARATOR_DIGITS) {
-      separator = digits
-      separatorBanks.push(digits)
-    }
-    if (this._separator === Fuerte.SEPARATOR_DIGITS_AND_SYMBOLS) {
-      separator = digits + symbols
-      separatorBanks.push(digits)
-      separatorBanks.push(symbols)
+      separator = Fuerte.DIGITS
+      separatorBanks.push(Fuerte.DIGITS)
+    } else if (this._separator === Fuerte.SEPARATOR_DIGITS_AND_SYMBOLS) {
+      separator = Fuerte.DIGITS + Fuerte.SYMBOLS
+      separatorBanks.push(Fuerte.DIGITS)
+      separatorBanks.push(Fuerte.SYMBOLS)
     }
     do {
       password = ''
@@ -230,16 +230,17 @@ Fuerte.prototype.make = function() {
         }
       }
     } while (!containsChars(password, separatorBanks))
+
   // Make a random password
   } else {
     let banks = []
-    banks.push(upper)
-    banks.push(lower)
+    banks.push(Fuerte.UPPER)
+    banks.push(Fuerte.LOWER)
     if (this._symbols) {
-      banks.push(symbols)
+      banks.push(Fuerte.SYMBOLS)
     }
     if (this._numbers) {
-      banks.push(digits)
+      banks.push(Fuerte.DIGITS)
     }
     do {
       password = randomChars(banks.join(''), this._size)

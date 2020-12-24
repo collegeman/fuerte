@@ -1,0 +1,32 @@
+{
+  "name": "collegeman/fuerte",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "wordpress-plugin",
+  "require": {
+    "php": "^7.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Collegeman\\Fuerte\\": "src/"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "extra": {
+    "laravel": {
+      "aliases": {
+        "Fuerte": "Collegeman\\Fuerte\\Fuerte"
+      }
+    },
+    "installer-paths": {
+      "wp-content/mu-plugins/{$name}/": [
+          "wpackagist-plugin/akismet"
+      ],
+      "wp-content/plugins/{$name}/": [
+          "type:wordpress-plugin"
+      ]
+    }
+  }
+}

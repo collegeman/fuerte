@@ -1,14 +1,24 @@
 {
-  "name": "fuerte",
+  "name": "@collegeman/fuerte",
   "version": "1.0.0",
   "description": "Generate strong passwords",
-  "main": "src/index.js",
-  "repository": "https://github.com/collegeman/fuerte",
+  "main": "dist/fuerte.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/collegeman/fuerte.git"
+  },
   "author": "Aaron Collegeman <aaron@collegeman.net>",
   "license": "MIT",
   "devDependencies": {
     "laravel-mix": "^6.0.2",
     "postcss": "^8.1",
     "raw-loader": "^4.0.2"
+  },
+  "bugs": {
+    "url": "https://github.com/collegeman/fuerte/issues"
+  },
+  "homepage": "https://github.com/collegeman/fuerte#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

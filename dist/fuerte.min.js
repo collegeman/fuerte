@@ -32,15 +32,15 @@ var Fuerte = function Fuerte() {
   this._symbols = false;
   this._capitalize = false;
   this._numbers = false;
-  this._separator = Fuerte.SEPARATOR_HYPHENS;
+  this._separator = Fuerte.SEPARATOR_SPACES;
   this.type(Fuerte.TYPE_MEMORABLE);
 };
 
 Fuerte.TYPE_RANDOM = 'random';
 Fuerte.TYPE_MEMORABLE = 'memorable';
 Fuerte.TYPE_PIN = 'pin';
-Fuerte.SEPARATOR_HYPHENS = '-';
 Fuerte.SEPARATOR_SPACES = ' ';
+Fuerte.SEPARATOR_HYPHENS = '-';
 Fuerte.SEPARATOR_PERIODS = '.';
 Fuerte.SEPARATOR_COMMAS = ',';
 Fuerte.SEPARATOR_UNDERSCORES = '_';
@@ -48,7 +48,7 @@ Fuerte.SEPARATOR_DIGITS = '0';
 Fuerte.SEPARATOR_DIGITS_AND_SYMBOLS = '0_';
 var minSize = [];
 minSize[Fuerte.TYPE_RANDOM] = 8;
-minSize[Fuerte.TYPE_MEMORABLE] = 3;
+minSize[Fuerte.TYPE_MEMORABLE] = 4;
 minSize[Fuerte.TYPE_PIN] = 3;
 var maxSize = [];
 maxSize[Fuerte.TYPE_RANDOM] = 100;
@@ -261,7 +261,7 @@ Fuerte.prototype.make = function () {
   var password = null; // Make a pin-type password
 
   if (this._type === Fuerte.TYPE_PIN) {
-    password = randomChars('0123456789', this._size); // Make a memorable-type password
+    password = randomChars(digits, this._size); // Make a memorable-type password
   } else if (this._type === Fuerte.TYPE_MEMORABLE) {
     var _words = [];
 
@@ -280,9 +280,7 @@ Fuerte.prototype.make = function () {
     if (this._separator === Fuerte.SEPARATOR_DIGITS) {
       separator = digits;
       separatorBanks.push(digits);
-    }
-
-    if (this._separator === Fuerte.SEPARATOR_DIGITS_AND_SYMBOLS) {
+    } else if (this._separator === Fuerte.SEPARATOR_DIGITS_AND_SYMBOLS) {
       separator = digits + symbols;
       separatorBanks.push(digits);
       separatorBanks.push(symbols);
