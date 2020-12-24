@@ -4,3 +4,4 @@ node_modules
 /vendor
 mix-manifest.json
 *.php
+composer.*
