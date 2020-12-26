@@ -130,7 +130,7 @@ is the same: it's fluent, allowing you to chain method invocations together
 to configure the generator and then make a password, like this:
 
 ```js
-let password = fuerte().memorable().separator('.').capitalize().size(6) 
+let password = fuerte().memorable().separator('.').capitalize().size(6).make() 
 // e.g., "hedge.pace.DIME.charm.onion.trick"
 ```
 
