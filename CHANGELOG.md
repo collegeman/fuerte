@@ -1,5 +1,9 @@
 # Changelog
  
+## 1.0.8
+
+* Bump support for PHP to ^7.4
+ 
 ## 1.0.7
 
 * In PHP library, switched from using `array_rand()` to using `random_int()`, the latter being suitable for cryptographic applications
