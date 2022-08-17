@@ -4,7 +4,7 @@
   "license": "MIT",
   "type": "wordpress-plugin",
   "require": {
-    "php": "^7.4"
+    "php": "^7.4|^8.x"
   },
   "autoload": {
     "psr-4": {
