@@ -1,6 +1,6 @@
 {
   "name": "collegeman/fuerte",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "license": "MIT",
   "type": "wordpress-plugin",
   "require": {
