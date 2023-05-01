@@ -1,10 +1,10 @@
 {
   "name": "collegeman/fuerte",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "license": "MIT",
   "type": "wordpress-plugin",
   "require": {
-    "php": "^7.4"
+    "php": "^7.4|^8.1"
   },
   "autoload": {
     "psr-4": {

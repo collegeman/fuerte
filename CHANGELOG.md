@@ -1,5 +1,9 @@
 # Changelog
  
+## 1.0.9
+
+* Add support for PHP ^8.1 
+ 
 ## 1.0.8
 
 * Bump support for PHP to ^7.4
